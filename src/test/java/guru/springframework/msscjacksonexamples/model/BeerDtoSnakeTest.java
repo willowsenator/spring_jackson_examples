@@ -10,9 +10,6 @@ import org.springframework.test.context.ActiveProfiles;
 @ActiveProfiles("snake")
 @JsonTest
 public class BeerDtoSnakeTest extends BaseTest{
-    @Autowired
-    ObjectMapper objectMapper;
-
     @Test
     void testSerializeSnakeDto() throws JsonProcessingException {
         var dto = getDto();

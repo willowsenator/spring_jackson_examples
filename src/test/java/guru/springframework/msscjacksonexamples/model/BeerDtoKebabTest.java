@@ -10,9 +10,6 @@ import org.springframework.test.context.ActiveProfiles;
 @ActiveProfiles("kebab")
 @JsonTest
 public class BeerDtoKebabTest extends BaseTest{
-    @Autowired
-    ObjectMapper objectMapper;
-
     @Test
     void testSerializeDto() throws JsonProcessingException {
         var dto = getDto();
