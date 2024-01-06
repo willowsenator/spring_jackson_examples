@@ -1,39 +1,62 @@
 package guru.springframework.msscjacksonexamples.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Null;
-import javax.validation.constraints.Positive;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.UUID;
-
 /**
  * Created by jt on 2019-04-20.
  */
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
-public class BeerDto {
+public record BeerDto( @NotNull UUID id,
+                       @NotBlank String beerName,
+                       @NotBlank String beerStyle,
+                       @Positive Long upc,
+                      BigDecimal price,
+                      OffsetDateTime createdDate,
+                      OffsetDateTime lastUpdatedDate
+                      ) {
+    public static final class Builder{
+        @NotNull
+        private UUID id;
+        @NotBlank
+        private String beerName;
+        @NotBlank
+        private String beerStyle;
+        @Positive
+        private Long upc;
+        private BigDecimal price;
+        private OffsetDateTime createdDate;
+        private OffsetDateTime lastUpdatedDate;
 
-    @Null
-    private UUID id;
+        public Builder(UUID id, String beerName, String beerStyle, Long upc){
+            this.id = id;
+            this.beerName = beerName;
+            this.beerStyle = beerStyle;
+            this.upc = upc;
+        }
 
-    @NotBlank
-    private String beerName;
+        public Builder price(BigDecimal price){
+            this.price = price;
+            return this;
+        }
 
-    @NotBlank
-    private String beerStyle;
+        public Builder createdDate(OffsetDateTime createdDate){
+            this.createdDate = createdDate;
+            return this;
+        }
 
-    @Positive
-    private Long upc;
+        public Builder lastUpdatedDate(OffsetDateTime lastUpdatedDate){
+            this.lastUpdatedDate = lastUpdatedDate;
+            return this;
+        }
 
-    private BigDecimal price;
-    private OffsetDateTime createdDate;
-    private OffsetDateTime lastUpdatedDate;
+        public BeerDto build(){
+            return new BeerDto(id, beerName, beerStyle, upc, price, createdDate, lastUpdatedDate);
+        }
+    }
 }
