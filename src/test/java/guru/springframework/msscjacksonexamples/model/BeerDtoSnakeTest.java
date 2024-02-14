@@ -11,7 +11,7 @@ import org.springframework.test.context.ActiveProfiles;
 @JsonTest
 public class BeerDtoSnakeTest extends BaseTest{
     @Test
-    void testSerializeSnakeDto() throws JsonProcessingException {
+    void testSnake() throws JsonProcessingException {
         var dto = getDto();
 
         var json = objectMapper.writeValueAsString(dto);

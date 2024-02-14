@@ -18,7 +18,7 @@ class BeerDtoTest extends BaseTest {
 
     @Test
     void testDeserialize() throws JsonProcessingException {
-        var json = "{\"id\":\"495beec9-7ad5-44e6-bb7f-187825ebb589\",\"beerName\":\"beerName\",\"beerStyle\":\"IPA\",\"upc\":123545,\"price\":6.5,\"createdDate\":\"2024-01-06T03:42:38.0057179+01:00\",\"lastUpdatedDate\":\"2024-01-06T03:42:38.0057179+01:00\"}";
+        var json = "{\"beerId\":\"ff3c92bd-386e-4e51-9870-0929ddd5617d\",\"beerName\":\"beerName\",\"beerStyle\":\"IPA\",\"upc\":123545,\"price\":\"6.5\",\"createdDate\":\"2024-01-06T20:42:09.4635701+01:00\",\"lastUpdatedDate\":\"2024-01-06T20:42:09+0100\",\"myLocalDate\":\"20240106\"}";
 
         var dto = objectMapper.readValue(json, BeerDto.class);
 
